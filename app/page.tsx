@@ -76,6 +76,16 @@ export default function Dashboard() {
         const largestExpense =
           expensesResponse.expenses.length > 0 ? Math.max(...expensesResponse.expenses.map((e) => e.amount)) : 0
 
+        // Debug logging
+        console.log("API Responses:", {
+          expensesResponse,
+          incomeResponse,
+          totalExpenses,
+          totalIncome,
+          largestExpense,
+          remainingBudget: totalIncome - totalExpenses
+        })
+
         // Process monthly data for charts
         const monthlyExpenses = processMonthlyData(monthlyExpensesResponse.expenses, "expense")
         const monthlyIncome = processMonthlyData(monthlyIncomeResponse.income, "income")
